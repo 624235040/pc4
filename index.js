@@ -180,17 +180,17 @@ app.get('/student/:studentId', function (req, res) {
 
 app.post('/students', function (req, res) {
 
-	var studentid = Number(req.body.studentid);
-	var studentname = req.body.studentname;
+	var studentId = Number(req.body.studentId);
+	var studentName = req.body.studentName;
 
-	var referencePath = '/students/' + studentid + '/';
+	var referencePath = '/students/' + studentId + '/';
 
 	var studentsReference = db.ref(referencePath);
 
 	if (studentsReference != null) {
 
 		studentsReference.update({
-			studentid: studentid, studentname: studentname
+			studentId: studentId, studentName: studentName
 		},
 			function (error) {
 				if (error) {
