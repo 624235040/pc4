@@ -66,7 +66,9 @@ app.post('/plus', function (req, res) {
 	res.send('{ "result": ' + (num1 + num2) + '}');
 });
 
-app.post('/book', function (req, res) {
+
+
+app.post('/books', function (req, res) {
 
 	var author = req.body.author;
 	var bookid = Number(req.body.bookid);
@@ -97,7 +99,7 @@ app.post('/book', function (req, res) {
 					res.send("data could not be saved. " + error)
 				}
 				else {
-					res.send("Success");
+					res.send("Success!!");
 				}
 			});
 	}
@@ -176,26 +178,26 @@ app.get('/student/:studentId', function (req, res) {
 		});
 });
 
-app.post('/student', function (req, res) {
+app.post('/students', function (req, res) {
 
-	var studentId = Number(req.body.studentId);
-	var studentName = req.body.studentName;
+	var studentid = Number(req.body.studentid);
+	var studentname = req.body.studentname;
 
-	var referencePath = '/students/' + studentId + '/';
+	var referencePath = '/students/' + studentid + '/';
 
 	var studentsReference = db.ref(referencePath);
 
 	if (studentsReference != null) {
 
 		studentsReference.update({
-			studentId: studentId, studentName: studentName
+			studentid: studentid, studentname: studentname
 		},
 			function (error) {
 				if (error) {
 					res.send("data could not be saved. " + error)
 				}
 				else {
-					res.send("Success");
+					res.send("Success!!!");
 				}
 			});
 	}
@@ -216,6 +218,9 @@ app.delete('/student/:studentId', function (req, res) {
 	if (error) throw error;
 
 });
+
+
+
 
 app.delete('/book/:bookid', function (req, res) {
 
